@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Webmilio.Dota2.AdmiralBulldog.Properties {
+namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Webmilio.Dota2.AdmiralBulldog.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Webmilio.Dota2.AdmiralBulldog.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Webmilio.Dota2.AdmiralBulldog.CustomVoice.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

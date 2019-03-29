@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{39629043-7AA9-4E1B-BCF1-FCAC2AB11C30}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Webmilio.Dota2.AdmiralBulldog</RootNamespace>
-    <AssemblyName>Webmilio.Dota2.AdmiralBulldog</AssemblyName>
+    <RootNamespace>Webmilio.Dota2.AdmiralBulldog.CustomVoice</RootNamespace>
+    <AssemblyName>Webmilio.Dota2.AdmiralBulldog.CustomVoice</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
