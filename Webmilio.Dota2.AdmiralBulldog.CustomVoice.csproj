@@ -145,5 +145,8 @@
   <ItemGroup>
     <None Include="Sounds\Processed\useyourmidas.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Processed\eel.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

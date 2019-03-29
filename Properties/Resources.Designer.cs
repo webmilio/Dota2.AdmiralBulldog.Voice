@@ -63,6 +63,15 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream eel {
+            get {
+                return ResourceManager.GetStream("eel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream npc_dota_hero_abaddon {
             get {
                 return ResourceManager.GetStream("npc_dota_hero_abaddon", resourceCulture);

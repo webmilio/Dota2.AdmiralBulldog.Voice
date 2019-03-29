@@ -15,7 +15,8 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
             Instance = new Program(args);
             Instance.Start();
         }
-        
+
+        private readonly Random _random = new Random();
         private readonly float[] _recentHealth = new float[25];
         private DateTime _lastRunesSound = new DateTime(0);
         private int _midasTimer = 0;
@@ -118,6 +119,16 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
                     else
                         PlaySound(Properties.Resources.wefuckinglost);
             }
+
+            int healthPercentage = gameState.Hero.HealthPercent;
+
+            // On Player Heal
+            if (PreviousGameState != null && gameState.Previously.Hero.Health != 0 && // Previous State health must be higher than 0 (not dead/wraith king passive).
+                gameState.Hero.Health - PreviousGameState.Hero.Health > 200 && // Hero must have gained at least 200 health.
+                healthPercentage - PreviousGameState.Hero.HealthPercent > 5 && // Hero must have gained at least 5% of its health.
+                _random.NextDouble() <= 0.33)
+                PlaySound(Properties.Resources.eel);
+
 
             // Midas Check
             foreach (Item item in gameState.Items.Inventory)
