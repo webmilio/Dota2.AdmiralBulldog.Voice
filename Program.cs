@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Net.Sockets;
-using System.Net.WebSockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Dota2GSI;
 using Dota2GSI.Nodes;
-using Microsoft.Win32;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
-namespace Webmilio.Dota2.AdmiralBulldog
+namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
 {
     internal class Program
     {

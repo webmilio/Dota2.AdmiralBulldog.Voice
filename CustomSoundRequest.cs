@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Webmilio.Dota2.AdmiralBulldog
+namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
 {
     // Possibly remove, depending on wether or not the software makes a webserver.
     public struct CustomSoundRequest
