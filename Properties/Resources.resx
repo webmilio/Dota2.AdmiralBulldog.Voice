@@ -142,4 +142,16 @@
   <data name="npc_dota_hero_venomancer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Processed\npc_dota_hero\npc_dota_hero_venomancer.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="roons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Processed\roons.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="useyourmidas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Processed\useyourmidas.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="vivon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Processed\vivon.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wefuckinglost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Processed\wefuckinglost.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

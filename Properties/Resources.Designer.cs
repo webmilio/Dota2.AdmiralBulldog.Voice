@@ -131,5 +131,41 @@ namespace Webmilio.Dota2.AdmiralBulldog.Properties {
                 return ResourceManager.GetStream("npc_dota_hero_venomancer", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream roons {
+            get {
+                return ResourceManager.GetStream("roons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream useyourmidas {
+            get {
+                return ResourceManager.GetStream("useyourmidas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream vivon {
+            get {
+                return ResourceManager.GetStream("vivon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream wefuckinglost {
+            get {
+                return ResourceManager.GetStream("wefuckinglost", resourceCulture);
+            }
+        }
     }
 }

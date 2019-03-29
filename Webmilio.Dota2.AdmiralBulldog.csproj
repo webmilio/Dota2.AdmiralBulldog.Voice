@@ -133,5 +133,17 @@
   <ItemGroup>
     <None Include="Sounds\Processed\npc_dota_hero\npc_dota_hero_venomancer.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Processed\roons.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Processed\vivon.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Processed\wefuckinglost.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Processed\useyourmidas.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Dota2GSI;
+using Dota2GSI.Nodes;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -25,7 +26,9 @@ namespace Webmilio.Dota2.AdmiralBulldog
         }
         
         private readonly float[] _recentHealth = new float[25];
-        
+        private DateTime _lastRunesSound = new DateTime(0);
+        private int _midasTimer = 0;
+
         public Program(string[] args)
         {
             Args = args;
@@ -78,22 +81,72 @@ namespace Webmilio.Dota2.AdmiralBulldog
                 FirstState = false;
             }
 
-            // Check if there is no on-going match.
-            if (gameState.Map.MatchID == -1) return;
+            try
+            {
+                // Check if there is no on-going match.
+                if (gameState.Map.MatchID == -1)
+                {
+                    PreviousGameState = null;
+                    return;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                return;
+            }
 
             // On Game Start
-            if (PreviousGameState == null || gameState.Map.MatchID != PreviousGameState.Map.MatchID) // Check if the previous match's id is the same as the current one.
+            if (PreviousGameState == null) // Check if the previous match's id is the same as the current one.
             {
                 UnmanagedMemoryStream audioStream = Properties.Resources.ResourceManager.GetStream(gameState.Hero.Name);
 
                 if (audioStream != null) // Check if the audio stream actually exists; without this, it would play windows default alert (\a).
-                    new SoundPlayer(audioStream).Play();
+                    PlaySound(audioStream);
+            }
+
+            // Runes Timer
+            // The sound is limited to 1 per 2 minutes since it will otherwise repeat about 5 times ever 5 minutes.
+            if (gameState.Map.GameState == DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS && DateTime.Now - _lastRunesSound > TimeSpan.FromMinutes(2) && gameState.Map.ClockTime % (5 * 60) == 0)
+            {
+                PlaySound(Properties.Resources.roons);
+                _lastRunesSound = DateTime.Now;
             }
 
             // On Player Died
             if (PreviousGameState != null && !gameState.Hero.IsAlive && PreviousGameState.Hero.IsAlive)
             {
                 FillArray(_recentHealth, 100f);
+            }
+
+            // On Player Win/Lose
+            if (gameState.Map.Win_team != PlayerTeam.None)
+            {
+                if (PreviousGameState.Map.Win_team == PlayerTeam.None) // This is to make sure the code is only run once.
+                    if (gameState.Player.Team == gameState.Map.Win_team)
+                        PlaySound(Properties.Resources.vivon);
+                    else
+                        PlaySound(Properties.Resources.wefuckinglost);
+            }
+
+            // Midas Check
+            foreach (Item item in gameState.Items.Inventory)
+            {
+                if (item.Name == "item_hand_of_midas") // We're doing it inverted from what DatGuy1 did since we might want to add timers for other items.
+                {
+                    if (item.Cooldown > 0)
+                        _midasTimer = 0;
+
+                    else
+                    {
+                        if (_midasTimer >= 50)
+                        {
+                            PlaySound(Properties.Resources.useyourmidas);
+                            _midasTimer -= 225;
+                        }
+
+                        _midasTimer++;
+                    }
+                }
             }
 
             PreviousGameState = gameState;
@@ -106,6 +159,8 @@ namespace Webmilio.Dota2.AdmiralBulldog
             for (int i = 0; i < array.Length; i++)
                 array[i] = value;
         }
+
+        private static void PlaySound(UnmanagedMemoryStream sound) => new SoundPlayer(sound).Play();
 
 
         private static void CreateGSIFile(Process dota2Process)
@@ -205,8 +260,6 @@ namespace Webmilio.Dota2.AdmiralBulldog
         public bool FirstState { get; private set; } = true;
 
         public GameState PreviousGameState { get; private set; }
-        
-        public long MatchID { get; private set; }
 
 
         public string[] Args { get; }
