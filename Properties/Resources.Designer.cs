@@ -171,6 +171,15 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream weed {
+            get {
+                return ResourceManager.GetStream("weed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream wefuckinglost {
             get {
                 return ResourceManager.GetStream("wefuckinglost", resourceCulture);

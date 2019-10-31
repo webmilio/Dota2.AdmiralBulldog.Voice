@@ -17,7 +17,6 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
         }
 
         private readonly Random _random = new Random();
-        private readonly float[] _recentHealth = new float[25];
         private DateTime _lastRunesSound = new DateTime(0);
         private int _midasTimer = 0;
 
@@ -43,7 +42,7 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
             GSL = new GameStateListener(4000);
             GSL.NewGameState += GSL_OnNewGameState;
 
-            FillArray(_recentHealth, 100f);
+            // TODO Remove if useless : FillArray(_recentHealth, 100f);
 
             Console.WriteLine("Starting GameState Integration Engine.");
             if (!GSL.Start())
@@ -98,7 +97,7 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
 
             // Runes Timer
             // The sound is limited to 1 per 2 minutes since it will otherwise repeat about 5 times ever 5 minutes.
-            if (gameState.Map.GameState == DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS && DateTime.Now - _lastRunesSound > TimeSpan.FromMinutes(2) && gameState.Map.ClockTime % (5 * 60) == 0)
+            if (gameState.Map.GameState == DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS && DateTime.Now - _lastRunesSound > TimeSpan.FromMinutes(2) && (gameState.Map.ClockTime + 30) % (5 * 60) == 0)
             {
                 PlaySound(Properties.Resources.roons);
                 _lastRunesSound = DateTime.Now;
@@ -107,7 +106,7 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
             // On Player Died
             if (PreviousGameState != null && !gameState.Hero.IsAlive && PreviousGameState.Hero.IsAlive)
             {
-                FillArray(_recentHealth, 100f);
+                // TODO Remove if useless : FillArray(_recentHealth, 100f);
             }
 
             // On Player Win/Lose
@@ -122,13 +121,14 @@ namespace Webmilio.Dota2.AdmiralBulldog.CustomVoice
 
             int healthPercentage = gameState.Hero.HealthPercent;
 
-            // On Player Heal
-            if (PreviousGameState != null && gameState.Previously.Hero.Health != 0 && // Previous State health must be higher than 0 (not dead/wraith king passive).
-                gameState.Hero.Health - PreviousGameState.Hero.Health > 200 && // Hero must have gained at least 200 health.
-                healthPercentage - PreviousGameState.Hero.HealthPercent > 5 && // Hero must have gained at least 5% of its health.
-                _random.NextDouble() <= 0.33)
-                PlaySound(Properties.Resources.eel);
-
+            if (PreviousGameState != null)
+            {
+                // On Player Heal
+                if (gameState.Previously.Hero.Health != 0 && // Previous State health must be higher than 0 (not dead/wraith king passive).
+                    gameState.Hero.Health - PreviousGameState.Hero.Health > 200 && // Hero must have gained at least 200 health.
+                    healthPercentage - PreviousGameState.Hero.HealthPercent >= 5) // Hero must have gained at least 5% of its health.
+                    PlaySound(Properties.Resources.eel);
+            }
 
             // Midas Check
             foreach (Item item in gameState.Items.Inventory)

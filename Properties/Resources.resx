@@ -154,6 +154,9 @@
   <data name="vivon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Processed\vivon.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="weed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Processed\weed.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="wefuckinglost" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Processed\wefuckinglost.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
